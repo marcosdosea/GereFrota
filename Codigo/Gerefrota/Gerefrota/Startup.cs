@@ -33,7 +33,9 @@ namespace Gerefrota
             services.AddDbContext<ContextDB>(x => x.UseMySQL(Configuration.GetConnectionString("MyConnection")));
 
             // Metodos para injeção.
-            services.AddServiceInjection();
+            services
+                .AddServiceInjection()
+                .AddAutoMapperInjection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
