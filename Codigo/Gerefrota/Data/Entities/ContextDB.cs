@@ -1,18 +1,16 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
 namespace Data.Entities
 {
-    public partial class ContexDB : DbContext
+    public partial class ContextDB : DbContext
     {
-        public ContexDB()
+        public ContextDB()
         {
         }
 
-        public ContexDB(DbContextOptions<ContexDB> options)
+        public ContextDB(DbContextOptions<ContextDB> options)
             : base(options)
         {
         }

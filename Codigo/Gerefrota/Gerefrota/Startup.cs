@@ -1,6 +1,8 @@
+using Data.Entities;
 using Gerefrota.Configuration.Injections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,9 @@ namespace Gerefrota
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gerefrota", Version = "v1" });
             });
+
+            // Contexto Injetado
+            services.AddDbContext<ContextDB>(x => x.UseMySQL(Configuration.GetConnectionString("MyConnection")));
 
             // Metodos para injeção.
             services.AddServiceInjection();
