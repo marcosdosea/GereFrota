@@ -2,7 +2,7 @@
 using Data.Entities;
 using Domain.Models;
 
-namespace Gerefrota.Configuration.AutoMapper
+namespace Gerefrota.Extensions.AutoMapper
 {
     public static class AutoMapperConfig
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Gerefrota.Configuration.Injections
+namespace Gerefrota.Extensions.Injections
 {
-    public static class ServiceInjection
+    public static class ServiceInjectionExtension
     {
         /// <summary>
         /// Realiza a injeção de dependencia da camada de serviço.

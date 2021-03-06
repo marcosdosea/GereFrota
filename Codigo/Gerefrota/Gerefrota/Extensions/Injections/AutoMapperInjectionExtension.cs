@@ -1,9 +1,9 @@
-﻿using Gerefrota.Configuration.AutoMapper;
+﻿using Gerefrota.Extensions.AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gerefrota.Configuration.Injections
+namespace Gerefrota.Extensions.Injections
 {
-    public static class AutoMapperInjection
+    public static class AutoMapperInjectionExtension
     {
         /// <summary>
         /// Cria o mapeamento das entidades e injeta no container.

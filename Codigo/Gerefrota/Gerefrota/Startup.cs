@@ -1,5 +1,5 @@
 using Data.Entities;
-using Gerefrota.Configuration.Injections;
+using Gerefrota.Extensions.Injections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -32,9 +32,10 @@ namespace Gerefrota
             // Contexto Injetado
             services.AddDbContext<ContextDB>(x => x.UseMySQL(Configuration.GetConnectionString("MyConnection")));
 
-            // Metodos para injeção.
+            // Extensions
             services
                 .AddServiceInjection()
+                .AddRepositoryInjection()
                 .AddAutoMapperInjection();
         }
 
