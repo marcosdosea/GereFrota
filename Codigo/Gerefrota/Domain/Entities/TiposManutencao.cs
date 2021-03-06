@@ -2,11 +2,11 @@
 
 #nullable disable
 
-namespace Data.Entities
+namespace Domain.Entities
 {
-    public partial class StatusSolicitacao
+    public partial class TiposManutencao
     {
-        public StatusSolicitacao()
+        public TiposManutencao()
         {
             SolicitacoesManutencao = new HashSet<SolicitacoesManutencao>();
         }

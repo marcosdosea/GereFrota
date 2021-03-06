@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Data.Entities;
+using Domain.Entities;
 using Domain.Models;
 
 namespace Gerefrota.Extensions.AutoMapper

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Data.Entities
+namespace Domain.Entities.Context
 {
     public partial class ContextDB : DbContext
     {

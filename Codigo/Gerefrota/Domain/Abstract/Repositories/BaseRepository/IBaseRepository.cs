@@ -16,7 +16,7 @@ namespace Domain.Abstract.Repositories.BaseRepository
         /// <summary>
         /// Atualiza um objeto da base de dados.
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj">Objeto a ser atualizado</param>
         /// <returns>Retorna o objeto atualizado</returns>
         T Update(T obj);
 
@@ -24,7 +24,7 @@ namespace Domain.Abstract.Repositories.BaseRepository
         /// Remove um objeto da base de dados
         /// </summary>
         /// <param name="obj">Objeto a ser deletado da base</param>
-        /// <returns></returns>
+        /// <returns>Retorna se o objeto foi deletado ou não.</returns>
         bool Delete(T obj);
 
         /// <summary>

@@ -1,12 +1,6 @@
-﻿using Data.Entities;
-using Domain.Abstract.Repositories.BaseRepository;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-
-namespace Data.Repositories.BaseRepository
+﻿namespace Data.Repositories.BaseRepository
 {
+    /*
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private readonly DbSet<T> _dbSet;
@@ -57,4 +51,5 @@ namespace Data.Repositories.BaseRepository
             return _context.SaveChanges() == 1 ? x : null;
         }
     }
+    */
 }

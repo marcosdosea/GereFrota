@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Data.Entities
+namespace Domain.Entities
 {
     public partial class RelatorioMecanico
     {

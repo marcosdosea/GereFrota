@@ -1,4 +1,4 @@
-using Data.Entities;
+using Domain.Entities.Context;
 using Gerefrota.Extensions.Injections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
