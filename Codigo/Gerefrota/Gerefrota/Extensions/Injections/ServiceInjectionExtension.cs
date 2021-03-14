@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Domain.Abstract.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Services.Services;
 
 namespace Gerefrota.Extensions.Injections
 {
@@ -11,6 +13,8 @@ namespace Gerefrota.Extensions.Injections
         /// <returns></returns>
         public static IServiceCollection AddServiceInjection(this IServiceCollection collection)
         {
+            collection.AddScoped<IUnidadeService, UnidadeService>();
+
             return collection;
         }
     }

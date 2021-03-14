@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Data.Repositories;
+using Domain.Abstract.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Gerefrota.Extensions.Injections
 {
@@ -11,6 +13,8 @@ namespace Gerefrota.Extensions.Injections
         /// <returns></returns>
         public static IServiceCollection AddRepositoryInjection(this IServiceCollection collection)
         {
+            collection.AddScoped<IUnidadeRepository, UnidadeRepository>();
+
             return collection;
         }
     }

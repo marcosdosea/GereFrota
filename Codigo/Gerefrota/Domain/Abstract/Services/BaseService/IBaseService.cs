@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 
-namespace Domain.Abstract.Repositories.BaseRepository
+namespace Domain.Abstract.Services.BaseService
 {
-    public interface IBaseRepository<T>
+    public interface IBaseService<T>
     {
         /// <summary>
         /// Insere o objeto na base de dados.
@@ -30,8 +28,15 @@ namespace Domain.Abstract.Repositories.BaseRepository
         /// <summary>
         /// Retorna os itens baseado no filtro que você passar.
         /// </summary>
-        /// <param name="filter">Filtro a ser utilizado, ex: "x => x.id == id"</param>
-        /// <returns>Retorna um IQueryable resultante daquele filtro.</returns>
-        IQueryable<T> Get(Expression<Func<T, bool>> filter = null);
+        /// <returns>Retorna uma lista de itens.</returns>
+        List<T> GetAll();
+
+        /// <summary>
+        /// Retorna os itens baseado no filtro que você passar.
+        /// </summary>
+        /// <param name="id">Id do objeto a ser buscado</param>
+        /// <returns>Retorna um uma entidade.</returns>
+        T Get(int id);
+
     }
 }

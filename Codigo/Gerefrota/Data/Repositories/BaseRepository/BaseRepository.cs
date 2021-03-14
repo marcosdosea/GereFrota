@@ -1,6 +1,12 @@
-﻿namespace Data.Repositories.BaseRepository
+﻿using Domain.Abstract.Repositories.BaseRepository;
+using Domain.Entities.Context;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace Data.Repositories.BaseRepository
 {
-    /*
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private readonly DbSet<T> _dbSet;
@@ -27,7 +33,7 @@
         /// </summary>
         /// <param name="filter">Filtro a ser utilizado, ex: "x => x.id == id"</param>
         /// <returns>Retorna um IQueryable resultante daquele filtro.</returns>
-        public IQueryable<T> Get(Expression<Func<T, bool>> filter = null) => _dbSet.Where(filter);
+        public IQueryable<T> Get(Expression<Func<T, bool>> filter = null) => filter is not null ? _dbSet.Where(filter) : _dbSet;
 
         /// <summary>
         /// Insere o objeto na base de dados.
@@ -51,5 +57,4 @@
             return _context.SaveChanges() == 1 ? x : null;
         }
     }
-    */
 }

@@ -6,14 +6,7 @@ namespace Domain.Entities.Context
 {
     public partial class ContextDB : DbContext
     {
-        public ContextDB()
-        {
-        }
-
-        public ContextDB(DbContextOptions<ContextDB> options)
-            : base(options)
-        {
-        }
+        public ContextDB(DbContextOptions<ContextDB> options) : base(options) { }
 
         public virtual DbSet<Abastecimento> Abastecimento { get; set; }
         public virtual DbSet<CategoriaCnh> CategoriaCnh { get; set; }

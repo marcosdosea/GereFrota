@@ -29,8 +29,12 @@ namespace Gerefrota
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gerefrota", Version = "v1" });
             });
 
-            // Contexto Injetado
-            services.AddDbContext<ContextDB>(x => x.UseMySQL(Configuration.GetConnectionString("MyConnection")));
+            /*
+             * Foi utilizado ContextPool para que a instancia do contexto seja gerenciada de maneira mais inteligente.
+             * P.S. Sempre que gerar o contexto novamente (via Scaffold) deve-se deletar o construtor vazio, para que funcione.
+             * A issue já foi aberta no repositorio do Entity.
+             */
+            services.AddDbContextPool<ContextDB>(x => x.UseMySQL(Configuration.GetConnectionString("MySql")));
 
             // Extensions
             services
