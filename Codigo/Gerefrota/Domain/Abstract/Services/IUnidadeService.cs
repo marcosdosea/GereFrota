@@ -3,5 +3,8 @@ using Domain.Models;
 
 namespace Domain.Abstract.Services
 {
-    public interface IUnidadeService : IBaseService<UnidadeModel> { }
+    public interface IUnidadeService : IBaseService<UnidadeModel>
+    {
+        UnidadeModel GetBySigla(string sigla);
+    }
 }

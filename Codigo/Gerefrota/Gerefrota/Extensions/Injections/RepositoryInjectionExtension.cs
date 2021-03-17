@@ -14,6 +14,7 @@ namespace Gerefrota.Extensions.Injections
         public static IServiceCollection AddRepositoryInjection(this IServiceCollection collection)
         {
             collection.AddScoped<IUnidadeRepository, UnidadeRepository>();
+            collection.AddScoped<ICategoriaCnhRepository, CategoriaCnhRepository>();
 
             return collection;
         }

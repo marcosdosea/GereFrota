@@ -18,6 +18,14 @@ namespace Services.Services
             _mapper = mapper;
         }
 
+        // Exemplo de retorno / Mapeamento automatizado.
+        public UnidadeModel GetBySigla(string sigla)
+        {
+            var unidadeBanco = _unidadeRepo.Get(u => u.Sigla.Equals(sigla)).FirstOrDefault();
+
+            return _mapper.Map<UnidadeModel>(unidadeBanco);
+        }
+
         public bool Delete(UnidadeModel obj) => _unidadeRepo.Delete(_mapper.Map<Unidade>(obj));
 
         public UnidadeModel Get(int id) => _mapper.Map<UnidadeModel>(_unidadeRepo.Get(x => x.Id == id).FirstOrDefault());

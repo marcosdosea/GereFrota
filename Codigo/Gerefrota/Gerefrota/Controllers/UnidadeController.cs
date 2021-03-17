@@ -1,5 +1,8 @@
 ﻿using Domain.Abstract.Services;
+using Domain.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Gerefrota.Controllers
 {
@@ -13,15 +16,17 @@ namespace Gerefrota.Controllers
             _unidadeService = unidadeService;
         }
 
-        /// <summary>
-        /// Obtem por ID. (Exemplo de metodo)
-        /// </summary>
-        /// <param name="id">Id da busca</param>
-        /// <returns></returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UnidadeModel))]
+        [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(EmptyResult))]
         public IActionResult Get(int id) => Ok(_unidadeService.Get(id));
 
         [HttpGet()]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UnidadeModel>))]
+        [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(EmptyResult))]
         public IActionResult Get() => Ok(_unidadeService.GetAll());
+
+        [HttpGet("{sigla}")]
+        public IActionResult Get(string sigla) => Ok(_unidadeService.GetBySigla(sigla));
     }
 }
