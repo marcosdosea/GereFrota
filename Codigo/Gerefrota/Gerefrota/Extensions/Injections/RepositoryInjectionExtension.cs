@@ -1,6 +1,4 @@
-﻿using Data.Repositories;
-using Data.Repositories.BaseRepository;
-using Domain.Abstract.Repositories;
+﻿using Data.Repositories.BaseRepository;
 using Domain.Abstract.Repositories.BaseRepository;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,13 +13,8 @@ namespace Gerefrota.Extensions.Injections
         /// <returns></returns>
         public static IServiceCollection AddRepositoryInjection(this IServiceCollection collection)
         {
-            #region BASE
+            // Ele injetará todos os Repositorios que estão sendo chamados.
             collection.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            #endregion
-            collection.AddScoped<IUnidadeRepository, UnidadeRepository>();
-            collection.AddScoped<ICategoriaCnhRepository, CategoriaCnhRepository>();
-            collection.AddScoped<IAbastecimentoRepository, AbastecimentoRepository>();
-
             return collection;
         }
     }

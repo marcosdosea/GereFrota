@@ -23,7 +23,7 @@ namespace Services.Services.BaseService
 
         public TModel Get(Expression<Func<TEntity, bool>> filter = null) => _mapper.Map<TEntity, TModel>(_repositoryInterface.Get(filter).FirstOrDefault());
 
-        public List<TModel> GetAll() => _repositoryInterface.Get(_ => true).Select(x => _mapper.Map<TModel>(x)).ToList();
+        public List<TModel> GetAll() => _repositoryInterface.Get().Select(x => _mapper.Map<TModel>(x)).ToList();
 
         public TModel Insert(TModel obj) => _mapper.Map<TModel>(_repositoryInterface.Insert(_mapper.Map<TEntity>(obj)));
 

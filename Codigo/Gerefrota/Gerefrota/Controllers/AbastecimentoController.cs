@@ -19,6 +19,6 @@ namespace Gerefrota.Controllers
 
         // GET api/<AbastecimentoController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id) => Ok(_abastecimentoService.Get(id));
+        public IActionResult Get(int id) => Ok(_abastecimentoService.Get(x => x.Id == id));
     }
 }
