@@ -15,6 +15,7 @@ namespace Gerefrota.Extensions.Injections
         {
             collection.AddScoped<IUnidadeRepository, UnidadeRepository>();
             collection.AddScoped<ICategoriaCnhRepository, CategoriaCnhRepository>();
+            collection.AddScoped<IAbastecimentoRepository, AbastecimentoRepository>();
 
             return collection;
         }
