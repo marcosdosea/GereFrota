@@ -19,14 +19,11 @@ namespace Gerefrota.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UnidadeModel))]
         [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(EmptyResult))]
-        public IActionResult Get(int id) => Ok(_unidadeService.Get(id));
+        public IActionResult Get(int id) => Ok(_unidadeService.Get(x => x.Id == id));
 
         [HttpGet()]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UnidadeModel>))]
         [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(EmptyResult))]
         public IActionResult Get() => Ok(_unidadeService.GetAll());
-
-        [HttpGet("{sigla}")]
-        public IActionResult Get(string sigla) => Ok(_unidadeService.GetBySigla(sigla));
     }
 }

@@ -1,10 +1,8 @@
 ﻿using Domain.Abstract.Services.BaseService;
+using Domain.Entities;
 using Domain.Models;
 
 namespace Domain.Abstract.Services
 {
-    public interface IUnidadeService : IBaseService<UnidadeModel>
-    {
-        UnidadeModel GetBySigla(string sigla);
-    }
+    public interface IUnidadeService : IBaseService<UnidadeModel, Unidade> { }
 }

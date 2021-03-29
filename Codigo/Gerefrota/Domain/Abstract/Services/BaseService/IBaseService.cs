@@ -1,42 +1,44 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Domain.Abstract.Services.BaseService
 {
-    public interface IBaseService<T>
+    public interface IBaseService<TModel, TEntity>
     {
         /// <summary>
         /// Insere o objeto na base de dados.
         /// </summary>
         /// <param name="obj">Objeto a ser inserido.</param>
         /// <returns></returns>
-        T Insert(T obj);
+        TModel Insert(TModel obj);
 
         /// <summary>
         /// Atualiza um objeto da base de dados.
         /// </summary>
         /// <param name="obj">Objeto a ser atualizado</param>
         /// <returns>Retorna o objeto atualizado</returns>
-        T Update(T obj);
+        TModel Update(TModel obj);
 
         /// <summary>
         /// Remove um objeto da base de dados
         /// </summary>
         /// <param name="obj">Objeto a ser deletado da base</param>
         /// <returns>Retorna se o objeto foi deletado ou não.</returns>
-        bool Delete(T obj);
+        bool Delete(TModel obj);
 
         /// <summary>
         /// Retorna os itens baseado no filtro que você passar.
         /// </summary>
         /// <returns>Retorna uma lista de itens.</returns>
-        List<T> GetAll();
+        List<TModel> GetAll();
 
         /// <summary>
         /// Retorna os itens baseado no filtro que você passar.
         /// </summary>
-        /// <param name="id">Id do objeto a ser buscado</param>
+        /// <param name="filter">Filtro do objeto a ser buscado</param>
         /// <returns>Retorna um uma entidade.</returns>
-        T Get(int id);
+        TModel Get(Expression<Func<TEntity, bool>> filter = null);
 
     }
 }
