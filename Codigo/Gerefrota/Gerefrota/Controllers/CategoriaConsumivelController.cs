@@ -15,6 +15,6 @@ namespace Gerefrota.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get() => Ok(_categoriaConsumivelService.Get());
+        public IActionResult Get() => Ok(_categoriaConsumivelService.GetAll());
     }
 }

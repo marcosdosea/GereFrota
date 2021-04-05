@@ -17,10 +17,7 @@ namespace Gerefrota.Controllers
 
         // GET: api/<ConsumivelVeicularController>
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        public IActionResult Get() => Ok(_consumivelVeicularService.GetAll());
 
         // GET api/<ConsumivelVeicularController>/5
         [HttpGet("{id}")]
