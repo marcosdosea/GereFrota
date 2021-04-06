@@ -21,7 +21,7 @@ namespace Services.Services.BaseService
 
         public bool Delete(TModel obj) => _repositoryInterface.Delete(_mapper.Map<TEntity>(obj));
 
-        public TModel Get(Expression<Func<TEntity, bool>> filter = null) => _mapper.Map<TEntity, TModel>(_repositoryInterface.Get(filter).FirstOrDefault());
+        public TModel Get(Expression<Func<TEntity, bool>> filter) => _mapper.Map<TEntity, TModel>(_repositoryInterface.Get(filter).FirstOrDefault());
 
         public List<TModel> GetAll() => _repositoryInterface.Get().Select(x => _mapper.Map<TModel>(x)).ToList();
 
