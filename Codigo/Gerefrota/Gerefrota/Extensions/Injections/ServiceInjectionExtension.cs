@@ -13,12 +13,13 @@ namespace Gerefrota.Extensions.Injections
         /// <returns></returns>
         public static IServiceCollection AddServiceInjection(this IServiceCollection collection)
         {
-            collection.AddScoped<IUnidadeService, UnidadeService>();
+            collection.AddScoped<IAbastecimentoService, AbastecimentoService>();
             collection.AddScoped<ICategoriaCnhService, CategoriaCnhService>();
             collection.AddScoped<ICategoriaConsumivelService, CategoriaConsumivelService>();
             collection.AddScoped<IConsumivelVeicularService, ConsumivelVeicularService>();
-            collection.AddScoped<IAbastecimentoService, AbastecimentoService>();
+            collection.AddScoped<IFrotaService, FrotaService>();
 
+            collection.AddScoped<IUnidadeService, UnidadeService>();
             return collection;
         }
     }
