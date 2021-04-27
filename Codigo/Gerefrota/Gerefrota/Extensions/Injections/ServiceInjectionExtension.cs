@@ -20,6 +20,7 @@ namespace Gerefrota.Extensions.Injections
             collection.AddScoped<IFrotaService, FrotaService>();
             collection.AddScoped<ITipoUsuarioService, TipoUsuarioService>();
             collection.AddScoped<IUsuarioService, UsuarioService>();
+            collection.AddScoped<IVeiculoService, VeiculoService>();
 
             collection.AddScoped<IUnidadeService, UnidadeService>();
             return collection;
