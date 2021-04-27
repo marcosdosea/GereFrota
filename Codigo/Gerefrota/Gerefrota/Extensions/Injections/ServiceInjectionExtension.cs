@@ -22,6 +22,7 @@ namespace Gerefrota.Extensions.Injections
             collection.AddScoped<IUsuarioService, UsuarioService>();
             collection.AddScoped<IVeiculoService, VeiculoService>();
             collection.AddScoped<IViagemService, ViagemService>();
+            collection.AddScoped<IVistoriaService, VistoriaService>();
 
             collection.AddScoped<IUnidadeService, UnidadeService>();
             return collection;
