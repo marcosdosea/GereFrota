@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gerefrota.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class MotoristaController : ControllerBase
     {
 
