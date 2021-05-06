@@ -19,8 +19,14 @@ namespace Gerefrota.Extensions.Injections
             collection.AddScoped<IConsumivelVeicularService, ConsumivelVeicularService>();
             collection.AddScoped<IFrotaService, FrotaService>();
             collection.AddScoped<ITipoUsuarioService, TipoUsuarioService>();
-
+            collection.AddScoped<IMotoristaService, MotoristaService>();
+            collection.AddScoped<IMultaService, MultaService>();
+            collection.AddScoped<IRelatorioMecanicoService, RelatorioMecanicoService>();
+            collection.AddScoped<ISolicitacoesManutencaoService, SolicitacoesManutencaoService>();
+            collection.AddScoped<IStatusSolicitacaoService, StatusSolicitacaoService>();
+            collection.AddScoped<ITiposManutencaoService, TiposManutencaoService>();
             collection.AddScoped<IUnidadeService, UnidadeService>();
+
             return collection;
         }
     }
