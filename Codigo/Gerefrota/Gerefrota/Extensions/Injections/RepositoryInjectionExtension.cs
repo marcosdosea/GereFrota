@@ -1,4 +1,6 @@
-﻿using Data.Repositories.BaseRepository;
+﻿using Data.Repositories;
+using Data.Repositories.BaseRepository;
+using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +17,7 @@ namespace Gerefrota.Extensions.Injections
         {
             // Ele injetará todos os Repositorios que estão sendo chamados.
             collection.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            collection.AddScoped<IUsuarioRepository, UsuarioRepository>();
             return collection;
         }
     }
