@@ -1,11 +1,11 @@
 ﻿using System;
-using Domain.Models;
+using Domain.Models.Aux;
 
 namespace Domain.Abstract.Services.Aux
 {
     public interface IAuthService
     {
-        string GenerateToken(UsuarioModel user);
+        string GenerateToken(UserAndTypeModel user);
     }
 }
 

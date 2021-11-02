@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Domain.Abstract.Services;
 using Domain.Abstract.Services.Aux;
 using Domain.Models.Aux;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -24,7 +27,6 @@ namespace Gerefrota.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
         public IActionResult Authenticate([FromBody] UserLogin model)
         {
             // Recupera o usuário
@@ -39,6 +41,20 @@ namespace Gerefrota.Controllers
 
             // Retorna os dados
             return Ok(token);
+        }
+
+        [HttpGet]
+        [Route("authenticated")]
+        [Authorize(Roles = "USUARIO")]
+        public string Authenticated()
+        {
+            var identity = User.Identity as ClaimsIdentity;
+
+            //User.Claims
+
+
+            var X = identity.Claims.ElementAt(3).Value;
+            return $"{JsonSerializer.Serialize(X)}";
         }
     }
 }

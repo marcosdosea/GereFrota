@@ -4,7 +4,9 @@ using System.Linq.Expressions;
 using Data.Repositories.BaseRepository;
 using Domain.Abstract.Repositories;
 using Domain.Entities;
+using Domain.Entities.Aux;
 using Domain.Entities.Context;
+using Domain.Models.Aux;
 
 namespace Data.Repositories
 {
@@ -13,7 +15,12 @@ namespace Data.Repositories
         private readonly ContextDB _context;
         public UsuarioRepository(ContextDB context) : base(context) => _context = context;
 
-        public Usuario GetUsuarioByLoginAndPass(Func<Usuario, bool> match)
-            => _context.Usuario.Where(match).FirstOrDefault();
+        public UserAndType GetUsuarioByLoginAndPass(Func<UserAndType, bool> match)
+            => _context.Usuario
+                    .Join(_context.TipoUsuario,
+                            u => u.IdTipoUsuario,
+                            tu => tu.Id,
+                            (u, tu) => new UserAndType { Usuario = u, TipoUsuario = tu })
+                    .Where(match).FirstOrDefault();
     }
 }

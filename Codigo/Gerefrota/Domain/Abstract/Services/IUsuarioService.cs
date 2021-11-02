@@ -7,6 +7,6 @@ namespace Domain.Abstract.Services
 {
     public interface IUsuarioService : IBaseService<UsuarioModel, Usuario>
     {
-        UsuarioModel GetUsuarioByLoginAndPass(UserLogin userLogin);
+        UserAndTypeModel GetUsuarioByLoginAndPass(UserLogin userLogin);
     }
 }

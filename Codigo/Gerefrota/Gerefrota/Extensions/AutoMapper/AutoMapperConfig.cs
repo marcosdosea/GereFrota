@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Domain.Entities.Aux;
 using Domain.Models;
+using Domain.Models.Aux;
 
 namespace Gerefrota.Extensions.AutoMapper
 {
@@ -27,6 +29,9 @@ namespace Gerefrota.Extensions.AutoMapper
                 cfg.CreateMap<Veiculo, VeiculoModel>().ReverseMap();
                 cfg.CreateMap<Viagem, ViagemModel>().ReverseMap();
                 cfg.CreateMap<Vistoria, VistoriaModel>().ReverseMap();
+
+                // Aux Models.
+                cfg.CreateMap<UserAndType, UserAndTypeModel>().ReverseMap();
             });
 
             return configuration.CreateMapper();

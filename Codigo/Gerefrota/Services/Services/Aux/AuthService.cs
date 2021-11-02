@@ -15,7 +15,7 @@ namespace Services.Services.Aux
         private readonly IConfiguration _config;
         public AuthService(IConfiguration config) => _config = config;
 
-        public string GenerateToken(UsuarioModel user)
+        public string GenerateToken(UserAndTypeModel user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_config.GetValue<string>("AuthInfo:Secret"));
@@ -23,9 +23,10 @@ namespace Services.Services.Aux
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Nome),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, user.IdTipoUsuario.ToString())
+                    new Claim(ClaimTypes.Name, user.Usuario.Nome),
+                    new Claim(ClaimTypes.Email, user.Usuario.Email),
+                    new Claim(ClaimTypes.MobilePhone, user.Usuario.Telefone),
+                    new Claim(ClaimTypes.Role, user.TipoUsuario.Descricao)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
