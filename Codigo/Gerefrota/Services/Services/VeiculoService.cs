@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Collections;
+using System.Collections.Generic;
+using AutoMapper;
+using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Abstract.Services;
 using Domain.Entities;
@@ -9,6 +12,18 @@ namespace Services.Services
 {
     public class VeiculoService : BaseService<VeiculoModel, Veiculo, IBaseRepository<Veiculo>>, IVeiculoService
     {
-        public VeiculoService(IBaseRepository<Veiculo> repo, IMapper mapper) : base(repo, mapper) { }
+        private readonly IVeiculoRepository _repo;
+        private readonly IMapper _mapper;
+        public VeiculoService(IVeiculoRepository repo, IMapper mapper) : base(repo, mapper)
+        {
+            _repo = repo;
+            _mapper = mapper;
+        }
+
+        public IEnumerable<VeiculoModel> ObterTodosVeiculosDaFrota(int idFrota)
+        {
+            var veiculos = _repo.GetAllVeiculoByFrota(idFrota);
+            return _mapper.Map<IEnumerable<VeiculoModel>>(veiculos);
+        }
     }
 }

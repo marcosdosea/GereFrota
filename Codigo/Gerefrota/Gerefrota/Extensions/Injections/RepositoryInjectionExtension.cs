@@ -18,6 +18,8 @@ namespace Gerefrota.Extensions.Injections
             // Ele injetará todos os Repositorios que estão sendo chamados.
             collection.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             collection.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            collection.AddScoped<IVeiculoRepository, VeiculoRepository>();
+            collection.AddScoped<IFrotaRepository, FrotaRepository>();
             return collection;
         }
     }

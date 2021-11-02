@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract.Services;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gerefrota.Controllers
@@ -15,5 +16,11 @@ namespace Gerefrota.Controllers
 
         [HttpGet]
         public IActionResult Get() => Ok(_veiculoService.GetAll());
+
+        [HttpGet("{idFrota}")]
+        public IActionResult Get(int idFrota) => Ok(_veiculoService.ObterTodosVeiculosDaFrota(idFrota));
+
+        [HttpPost]
+        public IActionResult Post([FromBody] VeiculoModel veiculo) => Ok(_veiculoService.Insert(veiculo));
     }
 }

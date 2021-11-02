@@ -23,10 +23,13 @@ namespace Services.Services.Aux
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
+                    new Claim(ClaimTypes.Sid, user.Usuario.Id.ToString()),
                     new Claim(ClaimTypes.Name, user.Usuario.Nome),
                     new Claim(ClaimTypes.Email, user.Usuario.Email),
                     new Claim(ClaimTypes.MobilePhone, user.Usuario.Telefone),
-                    new Claim(ClaimTypes.Role, user.TipoUsuario.Descricao)
+                    new Claim(ClaimTypes.Role, user.TipoUsuario.Descricao),
+                    new Claim(ClaimTypes.SerialNumber, user.Usuario.NumeroMatricula),
+                    new Claim(ClaimTypes.PrimaryGroupSid, user.Usuario.IdUnidade.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

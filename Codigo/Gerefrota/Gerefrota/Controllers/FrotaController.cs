@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract.Services;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gerefrota.Controllers
@@ -13,7 +14,10 @@ namespace Gerefrota.Controllers
             _frotaService = frotaService;
         }
 
-        [HttpGet]
-        public IActionResult Get() => Ok(_frotaService.Get());
+        [HttpGet("{idUnidade}")]
+        public IActionResult Get(int idUnidade) => Ok(_frotaService.ObterTodasAsFrotasPorUnidade(idUnidade));
+
+        [HttpPost]
+        public IActionResult Post([FromBody] FrotaModel frota) => Ok(_frotaService.Insert(frota));
     }
 }

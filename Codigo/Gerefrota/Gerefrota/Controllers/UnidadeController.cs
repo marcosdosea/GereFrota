@@ -25,5 +25,8 @@ namespace Gerefrota.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UnidadeModel>))]
         [ProducesResponseType(StatusCodes.Status204NoContent, Type = typeof(EmptyResult))]
         public IActionResult Get() => Ok(_unidadeService.GetAll());
+
+        [HttpPost]
+        public IActionResult Post([FromBody] UnidadeModel unidade) => Ok(_unidadeService.Insert(unidade));
     }
 }

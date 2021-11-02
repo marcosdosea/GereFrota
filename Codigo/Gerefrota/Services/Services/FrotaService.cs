@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Abstract.Services;
 using Domain.Entities;
@@ -9,6 +11,15 @@ namespace Services.Services
 {
     public class FrotaService : BaseService<FrotaModel, Frota, IBaseRepository<Frota>>, IFrotaService
     {
-        public FrotaService(IBaseRepository<Frota> repo, IMapper mapper) : base(repo, mapper) { }
+        private readonly IFrotaRepository _repo;
+        private readonly IMapper _mapper;
+        public FrotaService(IFrotaRepository repo, IMapper mapper) : base(repo, mapper)
+        {
+            _repo = repo;
+            _mapper = mapper;
+        }
+
+        public IEnumerable<FrotaModel> ObterTodasAsFrotasPorUnidade(int idUnidade)
+            => _mapper.Map<IEnumerable<FrotaModel>>(_repo.GetAllFrotasByUnidade(idUnidade));
     }
 }
