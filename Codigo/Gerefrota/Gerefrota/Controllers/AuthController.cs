@@ -25,7 +25,7 @@ namespace Gerefrota.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<dynamic>> Authenticate([FromBody] UserLogin model)
+        public IActionResult Authenticate([FromBody] UserLogin model)
         {
             // Recupera o usuário
             var user = _usuarioService.GetUsuarioByLoginAndPass(model);
@@ -37,11 +37,8 @@ namespace Gerefrota.Controllers
             // Gera o Token
             var token = _authService.GenerateToken(user);
 
-            // Oculta a senha
-            user.Senha = "";
-
             // Retorna os dados
-            return new { user, token };
+            return Ok(token);
         }
     }
 }

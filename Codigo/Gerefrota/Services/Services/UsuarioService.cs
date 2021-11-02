@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
@@ -23,9 +24,10 @@ namespace Services.Services
 
         public UsuarioModel GetUsuarioByLoginAndPass(UserLogin userLogin)
         {
-            var isCpf = userLogin.Username.All(c => char.IsDigit(c)); // check if is digit
+            var onlyDigits = Regex.Replace(userLogin.Username, "[^0-9a-zA-Z]+", "");
+            var isCpf = onlyDigits.All(c => char.IsDigit(c));
             Func<Usuario, bool> match = isCpf
-                ? (y) => y.Cpf == userLogin.Username.Replace("[^0-9a-zA-Z]+", "") && y.Senha == userLogin.Password
+                ? (y) => y.Cpf == onlyDigits && y.Senha == userLogin.Password
                 : (y) => y.Email == userLogin.Username && y.Senha == userLogin.Password;
 
             return _mapper.Map<UsuarioModel>(_repo.GetUsuarioByLoginAndPass(match));
