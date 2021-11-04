@@ -13,6 +13,6 @@ namespace Data.Repositories
         public VeiculoRepository(ContextDB context) : base(context) => _context = context;
 
         public IEnumerable<Veiculo> GetAllVeiculoByFrota(int idFrota)
-            => _context.Veiculo.Where(v => v.Id == idFrota);
+            => _context.Veiculo.Where(v => v.IdFrota == idFrota);
     }
 }

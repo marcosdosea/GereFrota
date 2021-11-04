@@ -7,11 +7,14 @@ namespace Gerefrota.Extensions.Identity
 {
     public static class GetIdentityUserExtension
     {
+        /// <summary>
+        /// Obtem usuario logado na aplicação, obtendo as informações do token passado.
+        /// </summary>
+        /// <param name="userIdentity"></param>
+        /// <returns></returns>
         public static UserAndTypeModel GetIdentityUser(this ClaimsIdentity userIdentity)
         {
             var claims = userIdentity.Claims;
-            var roleClaimType = userIdentity.RoleClaimType;
-
             var userAndType = new UserAndTypeModel
             {
                 Usuario = new UsuarioModel
@@ -20,22 +23,17 @@ namespace Gerefrota.Extensions.Identity
                     Nome = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value,
                     Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value,
                     Telefone = claims.FirstOrDefault(c => c.Type == ClaimTypes.MobilePhone).Value,
-                    IdTipoUsuario = int.Parse(claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value),
-
-                    new Claim(ClaimTypes.Sid, user.Usuario.Id.ToString()),
-                    new Claim(ClaimTypes.Name, user.Usuario.Nome),
-                    new Claim(ClaimTypes.Email, user.Usuario.Email),
-                    new Claim(ClaimTypes.MobilePhone, user.Usuario.Telefone),
-                    new Claim(ClaimTypes.Role, user.TipoUsuario.Descricao),
-                    new Claim(ClaimTypes.SerialNumber, user.Usuario.NumeroMatricula),
-                    new Claim(ClaimTypes.PrimaryGroupSid, user.Usuario.IdUnidade.ToString())
+                    IdTipoUsuario = int.Parse(claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value),
+                    IdUnidade = int.Parse(claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimaryGroupSid).Value),
                 },
-                TipoUsuario = new TipoUsuarioModel { }
+                TipoUsuario = new TipoUsuarioModel
+                {
+                    Id = int.Parse(claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimarySid).Value),
+                    Descricao = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value
+                }
             };
 
-            var roles = claims.FirstOrDefault(c => c.Type == ClaimTypes.PrimaryGroupSid);
-
-            return null;
+            return userAndType;
         }
     }
 }

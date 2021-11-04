@@ -1,4 +1,6 @@
 ﻿using Domain.Abstract.Services;
+using Gerefrota.Extensions.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Security.Claims;
@@ -7,17 +9,21 @@ namespace Gerefrota.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HomeController : ControllerBase
     {
         private readonly IVeiculoService _veiculoService;
-        public HomeController(IVeiculoService veiculoService) => _veiculoService = veiculoService;
+        private readonly IFrotaService _frotaService;
+        public HomeController(IVeiculoService veiculoService, IFrotaService frotaService) => (_veiculoService, _frotaService) = (veiculoService, frotaService);
 
-        [HttpGet("{idFrota}")]
-        public IActionResult Get(int idFrota)
+        [HttpGet]
+        public IActionResult Get()
         {
             var identity = User.Identity as ClaimsIdentity;
-            var idUnidade = identity.Claims.Where(x => x.Type == ClaimTypes.PrimaryGroupSid).FirstOrDefault();
-            return Ok(_veiculoService.ObterTodosVeiculosDaFrota(idFrota));
+            var usuario = identity.GetIdentityUser();
+            var frotas = _frotaService.ObterTodasAsFrotasPorUnidade(usuario.Usuario.IdUnidade);
+            var veiculos = frotas.Select(f => _veiculoService.ObterTodosVeiculosDaFrota(f.Id));
+            return Ok(veiculos);
         }
     }
 }
