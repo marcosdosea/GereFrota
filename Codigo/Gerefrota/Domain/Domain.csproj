@@ -11,12 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Models\Aux\" />
-    <None Remove="Abstract\Services\Aux\" />
-    <None Remove="Entities\Aux\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Aux\" />
+    <Folder Include="Models\Auxs\" />
     <Folder Include="Abstract\Services\Auxs\" />
     <Folder Include="Entities\Auxs\" />
   </ItemGroup>
