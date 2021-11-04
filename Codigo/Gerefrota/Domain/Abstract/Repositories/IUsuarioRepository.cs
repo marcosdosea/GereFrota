@@ -1,7 +1,7 @@
 ﻿using System;
 using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Entities;
-using Domain.Entities.Aux;
+using Domain.Entities.Auxs;
 
 namespace Domain.Abstract.Repositories
 {

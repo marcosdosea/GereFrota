@@ -2,13 +2,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Domain.Abstract.Services.Aux;
+using Domain.Abstract.Services.Auxs;
 using Domain.Models;
-using Domain.Models.Aux;
+using Domain.Models.Auxs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Services.Services.Aux
+namespace Services.Services.Auxs
 {
     public class AuthService : IAuthService
     {

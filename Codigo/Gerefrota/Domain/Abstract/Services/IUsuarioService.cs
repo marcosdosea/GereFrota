@@ -1,7 +1,7 @@
 ﻿using Domain.Abstract.Services.BaseService;
 using Domain.Entities;
 using Domain.Models;
-using Domain.Models.Aux;
+using Domain.Models.Auxs;
 
 namespace Domain.Abstract.Services
 {

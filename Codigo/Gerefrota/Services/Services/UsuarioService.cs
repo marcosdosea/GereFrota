@@ -6,9 +6,9 @@ using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Abstract.Services;
 using Domain.Entities;
-using Domain.Entities.Aux;
+using Domain.Entities.Auxs;
 using Domain.Models;
-using Domain.Models.Aux;
+using Domain.Models.Auxs;
 using Services.Services.BaseService;
 
 namespace Services.Services

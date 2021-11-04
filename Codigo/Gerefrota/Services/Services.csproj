@@ -20,6 +20,6 @@
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\Aux\" />
+    <Folder Include="Services\Auxs\" />
   </ItemGroup>
 </Project>

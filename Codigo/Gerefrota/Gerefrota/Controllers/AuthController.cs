@@ -5,8 +5,8 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Domain.Abstract.Services;
-using Domain.Abstract.Services.Aux;
-using Domain.Models.Aux;
+using Domain.Abstract.Services.Auxs;
+using Domain.Models.Auxs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

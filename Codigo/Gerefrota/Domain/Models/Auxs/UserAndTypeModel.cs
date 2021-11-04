@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Domain.Models.Aux
+namespace Domain.Models.Auxs
 {
     public class UserAndTypeModel
     {

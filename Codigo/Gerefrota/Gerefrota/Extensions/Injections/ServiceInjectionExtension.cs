@@ -1,8 +1,8 @@
 ﻿using Domain.Abstract.Services;
-using Domain.Abstract.Services.Aux;
+using Domain.Abstract.Services.Auxs;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
-using Services.Services.Aux;
+using Services.Services.Auxs;
 
 namespace Gerefrota.Extensions.Injections
 {

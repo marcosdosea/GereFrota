@@ -17,7 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Aux\" />
-    <Folder Include="Abstract\Services\Aux\" />
-    <Folder Include="Entities\Aux\" />
+    <Folder Include="Abstract\Services\Auxs\" />
+    <Folder Include="Entities\Auxs\" />
   </ItemGroup>
 </Project>

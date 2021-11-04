@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 using Data.Repositories.BaseRepository;
 using Domain.Abstract.Repositories;
 using Domain.Entities;
-using Domain.Entities.Aux;
+using Domain.Entities.Auxs;
 using Domain.Entities.Context;
-using Domain.Models.Aux;
+using Domain.Models.Auxs;
 
 namespace Data.Repositories
 {

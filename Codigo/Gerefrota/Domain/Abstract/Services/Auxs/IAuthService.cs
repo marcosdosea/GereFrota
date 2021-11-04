@@ -1,7 +1,7 @@
 ﻿using System;
-using Domain.Models.Aux;
+using Domain.Models.Auxs;
 
-namespace Domain.Abstract.Services.Aux
+namespace Domain.Abstract.Services.Auxs
 {
     public interface IAuthService
     {
