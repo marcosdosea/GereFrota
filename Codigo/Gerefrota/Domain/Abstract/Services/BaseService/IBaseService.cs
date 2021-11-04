@@ -31,7 +31,7 @@ namespace Domain.Abstract.Services.BaseService
         /// Retorna os itens baseado no filtro que você passar.
         /// </summary>
         /// <returns>Retorna uma lista de itens.</returns>
-        List<TModel> GetAll();
+        IEnumerable<TModel> GetAll();
 
         /// <summary>
         /// Retorna os itens baseado no filtro que você passar.
