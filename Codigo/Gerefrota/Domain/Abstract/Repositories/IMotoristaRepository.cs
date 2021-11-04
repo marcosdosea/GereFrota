@@ -3,5 +3,5 @@ using Domain.Entities;
 
 namespace Domain.Abstract.Repositories
 {
-   public interface IMotoristaRepository : IBaseRepository<Motorista> { }
+    public interface IMotoristaRepository : IBaseRepository<Motorista> { }
 }

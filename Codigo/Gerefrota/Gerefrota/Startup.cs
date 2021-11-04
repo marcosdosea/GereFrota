@@ -1,5 +1,3 @@
-using System;
-using System.Text;
 using Domain.Entities.Context;
 using Gerefrota.Extensions.Injections;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
+using System.Text;
 
 namespace Gerefrota
 {

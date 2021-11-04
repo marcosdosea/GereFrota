@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Data.Repositories.BaseRepository;
+﻿using Data.Repositories.BaseRepository;
 using Domain.Abstract.Repositories;
 using Domain.Entities;
 using Domain.Entities.Context;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Data.Repositories
 {

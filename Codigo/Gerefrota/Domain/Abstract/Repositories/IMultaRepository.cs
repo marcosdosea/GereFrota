@@ -5,5 +5,5 @@ using Domain.Entities;
 namespace Domain.Abstract.Repositories
 {
     public interface IMultaRepository : IBaseRepository<Multa> { }
-    
+
 }

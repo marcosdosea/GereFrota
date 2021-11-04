@@ -1,5 +1,4 @@
-﻿using System;
-namespace Domain.Entities.Auxs
+﻿namespace Domain.Entities.Auxs
 {
     public class UserAndType
     {

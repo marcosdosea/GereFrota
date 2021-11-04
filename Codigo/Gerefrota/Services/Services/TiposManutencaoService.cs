@@ -11,5 +11,5 @@ namespace Services.Services
     {
         public TiposManutencaoService(IBaseRepository<TiposManutencao> repo, IMapper mapper) : base(repo, mapper) { }
     }
-    
+
 }

@@ -4,5 +4,5 @@ using Domain.Entities;
 namespace Domain.Abstract.Repositories
 {
     public interface ITiposManutencaoRepository : IBaseRepository<TiposManutencao> { }
-    
+
 }

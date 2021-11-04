@@ -1,12 +1,11 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Domain.Abstract.Services.Auxs;
-using Domain.Models;
+﻿using Domain.Abstract.Services.Auxs;
 using Domain.Models.Auxs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Services.Services.Auxs
 {

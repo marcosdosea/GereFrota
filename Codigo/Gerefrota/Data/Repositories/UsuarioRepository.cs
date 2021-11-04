@@ -1,12 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
-using Data.Repositories.BaseRepository;
+﻿using Data.Repositories.BaseRepository;
 using Domain.Abstract.Repositories;
 using Domain.Entities;
 using Domain.Entities.Auxs;
 using Domain.Entities.Context;
-using Domain.Models.Auxs;
+using System;
+using System.Linq;
 
 namespace Data.Repositories
 {

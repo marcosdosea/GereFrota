@@ -5,5 +5,5 @@ using Domain.Models;
 namespace Domain.Abstract.Services
 {
     public interface ITiposManutencaoService : IBaseService<TiposManutencaoModel, TiposManutencao> { }
-   
+
 }

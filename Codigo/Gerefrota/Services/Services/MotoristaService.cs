@@ -11,5 +11,5 @@ namespace Services.Services
     {
         public MotoristaService(IBaseRepository<Motorista> repo, IMapper mapper) : base(repo, mapper) { }
     }
-    
+
 }

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Abstract.Services;
 using Domain.Entities;
 using Domain.Models;
 using Services.Services.BaseService;
+using System.Collections.Generic;
 
 namespace Services.Services
 {

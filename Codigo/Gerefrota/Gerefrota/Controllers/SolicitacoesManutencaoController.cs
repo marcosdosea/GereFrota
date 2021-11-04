@@ -16,6 +16,6 @@ namespace Gerefrota.Controllers
 
         [HttpGet]
         public IActionResult Get() => Ok(_solicitacoesManutencaoService.GetAll());
-        
+
     }
 }

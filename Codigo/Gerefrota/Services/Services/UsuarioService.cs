@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Abstract.Services;
@@ -10,6 +7,9 @@ using Domain.Entities.Auxs;
 using Domain.Models;
 using Domain.Models.Auxs;
 using Services.Services.BaseService;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Services.Services
 {

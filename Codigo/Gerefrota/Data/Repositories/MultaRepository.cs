@@ -5,7 +5,7 @@ using Domain.Entities.Context;
 
 namespace Data.Repositories
 {
-    public class MultaRepository : BaseRepository<Multa>, IMultaRepository 
+    public class MultaRepository : BaseRepository<Multa>, IMultaRepository
     {
         public MultaRepository(ContextDB context) : base(context) { }
     }

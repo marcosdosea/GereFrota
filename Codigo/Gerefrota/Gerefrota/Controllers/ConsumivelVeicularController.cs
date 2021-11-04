@@ -1,6 +1,5 @@
 ﻿using Domain.Abstract.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 
 namespace Gerefrota.Controllers

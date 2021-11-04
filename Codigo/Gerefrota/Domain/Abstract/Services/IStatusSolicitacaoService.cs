@@ -5,5 +5,5 @@ using Domain.Models;
 namespace Domain.Abstract.Services
 {
     public interface IStatusSolicitacaoService : IBaseService<StatusSolicitacaoModel, StatusSolicitacao> { }
-    
+
 }
