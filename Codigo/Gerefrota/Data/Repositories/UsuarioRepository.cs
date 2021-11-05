@@ -13,12 +13,13 @@ namespace Data.Repositories
         private readonly ContextDB _context;
         public UsuarioRepository(ContextDB context) : base(context) => _context = context;
 
-        public UserAndType GetUsuarioByLoginAndPass(Func<UserAndType, bool> match)
+        public UserAndType GetUsuarioByLoginAndPass(Func<Usuario, bool> match)
             => _context.Usuario
-                    .Join(_context.TipoUsuario,
-                            u => u.IdTipoUsuario,
-                            tu => tu.Id,
-                            (u, tu) => new UserAndType { Usuario = u, TipoUsuario = tu })
-                    .Where(match).FirstOrDefault();
+                        .Where(match).ToArray()
+                        .Join(_context.TipoUsuario,
+                              u => u.IdTipoUsuario,
+                              tu => tu.Id,
+                              (u, tu) => new UserAndType { Usuario = u, TipoUsuario = tu })
+                        .FirstOrDefault();
     }
 }

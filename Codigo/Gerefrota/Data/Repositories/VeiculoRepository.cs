@@ -18,14 +18,15 @@ namespace Data.Repositories
 
         /// <summary>
         /// SUMARIO DAS SOLICITAÇÕES
-        /// 0 - Concluída
-        /// 1 - Em Aberto
-        /// 2 - Em Andamento
+        /// 1 - Concluída
+        /// 2 - Em Aberto
+        /// 3 - Em Andamento
         /// </summary>
         /// <param name="idFrota"></param>
         /// <returns></returns>
-        public IEnumerable<VeiculoESolicitacaoManutencao> GetAllVeiculosAndSolicitacao(int idFrota)
+        public IEnumerable<VeiculoESolicitacaoManutencao> GetAllVeiculosAndSolicitacao(int idFrota, bool withConcluida = false)
             => _context.Veiculo
+                        .Where(v => v.IdFrota == idFrota)
                         .Join(
                             _context.SolicitacoesManutencao,
                             veiculo => veiculo.Id,
@@ -39,13 +40,13 @@ namespace Data.Repositories
                                 vstm => vstm.veiculoSolicitacaoManutencao.solicitacaoManutencao.IdStatusSolicitacao,
                                 stm => stm.Id,
                                 (veiculoSolicitacaoStatusManutencao, statusManutencao) => new { veiculoSolicitacaoStatusManutencao, statusManutencao })
+                        .Where(o => o.statusManutencao.Id >= (withConcluida ? 0 : 1)) // Substituir os valores por ENUM pra ficar mais legivel.
                         .Select(o => new VeiculoESolicitacaoManutencao
                         {
                             Veiculo = o.veiculoSolicitacaoStatusManutencao.veiculoSolicitacaoManutencao.veiculo,
                             SolicitacoesManutencao = o.veiculoSolicitacaoStatusManutencao.veiculoSolicitacaoManutencao.solicitacaoManutencao,
                             StatusSolicitacao = o.statusManutencao,
                             TiposManutencao = o.veiculoSolicitacaoStatusManutencao.tipoManutencao
-                        })
-                        .Where(o => o.Veiculo.IdFrota == idFrota && o.StatusSolicitacao.Id > 0);
+                        });
     }
 }

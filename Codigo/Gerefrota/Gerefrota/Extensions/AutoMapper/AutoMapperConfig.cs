@@ -33,6 +33,7 @@ namespace Gerefrota.Extensions.AutoMapper
                 // Aux Models.
                 cfg.CreateMap<UserAndType, UserAndTypeModel>().ReverseMap();
                 cfg.CreateMap<VeiculoESolicitacaoManutencao, VeiculoESolicitacaoManutencaoModel>().ReverseMap();
+                cfg.CreateMap<MotoristaUser, MotoristaUserModel>().ReverseMap();
             });
 
             return configuration.CreateMapper();

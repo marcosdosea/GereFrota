@@ -7,9 +7,6 @@ namespace Data.Repositories
 {
     public class CategoriaCnhRepository : BaseRepository<CategoriaCnh>, ICategoriaCnhRepository
     {
-        public CategoriaCnhRepository(ContextDB context) : base(context)
-        {
-
-        }
+        public CategoriaCnhRepository(ContextDB context) : base(context) { }
     }
 }
