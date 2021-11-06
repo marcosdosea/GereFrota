@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract.Services;
+using Domain.Models.Auxs;
 using Gerefrota.Extensions.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,16 +16,17 @@ namespace Gerefrota.Controllers
         private readonly IVeiculoService _veiculoService;
         private readonly IFrotaService _frotaService;
         private readonly IUnidadeService _unidadeService;
+        private UserAndTypeModel _usuarioLogado;
         public ManutencaoController(IVeiculoService veiculoService, IFrotaService frotaService, IUnidadeService unidadeService)
             => (_veiculoService, _frotaService, _unidadeService) = (veiculoService, frotaService, unidadeService);
 
         [HttpGet]
         public IActionResult Get()
         {
-            var identity = User.Identity as ClaimsIdentity;
-            var usuario = identity.GetIdentityUser();
-            var frotas = _frotaService.ObterTodasAsFrotasPorUnidade(usuario.Usuario.IdUnidade);
-            var unidade = _unidadeService.Get(u => u.Id == usuario.Usuario.IdUnidade);
+            _usuarioLogado = ((ClaimsIdentity)User.Identity).GetIdentityUser();
+
+            var frotas = _frotaService.ObterTodasAsFrotasPorUnidade(_usuarioLogado.Usuario.IdUnidade);
+            var unidade = _unidadeService.Get(u => u.Id == _usuarioLogado.Usuario.IdUnidade);
             var solicitacoes = frotas.Select(f => _veiculoService.GetAllVeiculosAndSolicitacao(f.Id));
             return Ok(new { solicitacoes, unidade });
         }

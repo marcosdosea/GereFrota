@@ -1,4 +1,5 @@
 ﻿using Domain.Abstract.Services;
+using Domain.Models.Auxs;
 using Gerefrota.Extensions.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,14 +13,14 @@ namespace Gerefrota.Controllers
     public class CondutorController : ControllerBase
     {
         private readonly IMotoristaService _motoristaService;
-        public CondutorController(IMotoristaService motoristaService) => (_motoristaService) = (motoristaService);
+        private UserAndTypeModel _usuarioLogado;
+        public CondutorController(IMotoristaService motoristaService) => _motoristaService = motoristaService;
 
         [HttpGet]
         public IActionResult Get()
         {
-            var identity = User.Identity as ClaimsIdentity;
-            var usuarioLogado = identity.GetIdentityUser();
-            var motoristas = _motoristaService.ObterMotoristasPorUnidade(usuarioLogado.Usuario.IdUnidade);
+            _usuarioLogado = ((ClaimsIdentity)User.Identity).GetIdentityUser();
+            var motoristas = _motoristaService.ObterMotoristasPorUnidade(_usuarioLogado.Usuario.IdUnidade);
             return Ok(motoristas);
         }
     }
