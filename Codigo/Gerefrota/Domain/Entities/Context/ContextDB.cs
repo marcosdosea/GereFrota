@@ -6,14 +6,7 @@ namespace Domain.Entities.Context
 {
     public partial class ContextDB : DbContext
     {
-        public ContextDB()
-        {
-        }
-
-        public ContextDB(DbContextOptions<ContextDB> options)
-            : base(options)
-        {
-        }
+        public ContextDB(DbContextOptions<ContextDB> options) : base(options) { }
 
         public virtual DbSet<Abastecimento> Abastecimento { get; set; }
         public virtual DbSet<Avarias> Avarias { get; set; }
@@ -681,6 +674,12 @@ namespace Domain.Entities.Context
                 entity.Property(e => e.IdVeiculo)
                     .HasColumnType("int unsigned")
                     .HasColumnName("ID_VEICULO");
+
+                entity.Property(e => e.TemAvaria)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasColumnName("TEM_AVARIA")
+                    .HasDefaultValueSql("b'0'");
 
                 entity.HasOne(d => d.IdRelatorioMecanicoNavigation)
                     .WithMany(p => p.Vistoria)
