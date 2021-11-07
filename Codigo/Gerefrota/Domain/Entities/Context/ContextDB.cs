@@ -6,11 +6,20 @@ namespace Domain.Entities.Context
 {
     public partial class ContextDB : DbContext
     {
-        public ContextDB(DbContextOptions<ContextDB> options) : base(options) { }
+        public ContextDB()
+        {
+        }
+
+        public ContextDB(DbContextOptions<ContextDB> options)
+            : base(options)
+        {
+        }
 
         public virtual DbSet<Abastecimento> Abastecimento { get; set; }
+        public virtual DbSet<Avarias> Avarias { get; set; }
         public virtual DbSet<CategoriaCnh> CategoriaCnh { get; set; }
         public virtual DbSet<CategoriaConsumivel> CategoriaConsumivel { get; set; }
+        public virtual DbSet<Componente> Componente { get; set; }
         public virtual DbSet<ConsumivelVeicular> ConsumivelVeicular { get; set; }
         public virtual DbSet<Frota> Frota { get; set; }
         public virtual DbSet<Motorista> Motorista { get; set; }
@@ -58,6 +67,39 @@ namespace Domain.Entities.Context
                     .HasConstraintName("fk_ABASTECIMENTO_VEICULOS1");
             });
 
+            modelBuilder.Entity<Avarias>(entity =>
+            {
+                entity.ToTable("avarias");
+
+                entity.HasIndex(e => e.IdComponente, "fk_AVARIAS_COMPONENTE1_idx");
+
+                entity.HasIndex(e => e.IdVistoria, "fk_AVARIAS_VISTORIA1_idx");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int unsigned")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.IdComponente)
+                    .HasColumnType("int unsigned")
+                    .HasColumnName("ID_COMPONENTE");
+
+                entity.Property(e => e.IdVistoria)
+                    .HasColumnType("int unsigned")
+                    .HasColumnName("ID_VISTORIA");
+
+                entity.HasOne(d => d.IdComponenteNavigation)
+                    .WithMany(p => p.Avarias)
+                    .HasForeignKey(d => d.IdComponente)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_AVARIAS_COMPONENTE1");
+
+                entity.HasOne(d => d.IdVistoriaNavigation)
+                    .WithMany(p => p.Avarias)
+                    .HasForeignKey(d => d.IdVistoria)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_AVARIAS_VISTORIA1");
+            });
+
             modelBuilder.Entity<CategoriaCnh>(entity =>
             {
                 entity.ToTable("categoria_cnh");
@@ -75,6 +117,20 @@ namespace Domain.Entities.Context
             modelBuilder.Entity<CategoriaConsumivel>(entity =>
             {
                 entity.ToTable("categoria_consumivel");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int unsigned")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Descricao)
+                    .IsRequired()
+                    .HasMaxLength(45)
+                    .HasColumnName("DESCRICAO");
+            });
+
+            modelBuilder.Entity<Componente>(entity =>
+            {
+                entity.ToTable("componente");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int unsigned")
@@ -406,7 +462,7 @@ namespace Domain.Entities.Context
 
                 entity.Property(e => e.Email)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(150)
                     .HasColumnName("EMAIL");
 
                 entity.Property(e => e.IdTipoUsuario)
@@ -419,7 +475,7 @@ namespace Domain.Entities.Context
 
                 entity.Property(e => e.Nome)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .HasColumnName("NOME");
 
                 entity.Property(e => e.NumeroMatricula)
