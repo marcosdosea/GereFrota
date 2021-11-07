@@ -34,7 +34,7 @@ namespace Gerefrota
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
-                    Description = "Please insert JWT with Bearer into field",
+                    Description = "Por favor insira o token JWT (com o prefixo Bearer) no campo.",
                     Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey
                 });

@@ -21,8 +21,9 @@ namespace Gerefrota.Extensions.Injections
             collection.AddScoped<IVeiculoRepository, VeiculoRepository>();
             collection.AddScoped<IFrotaRepository, FrotaRepository>();
             collection.AddScoped<IMotoristaRepository, MotoristaRepository>();
-            collection.AddScoped<IAvariaRepository, AvariasRepository>();
+            collection.AddScoped<IAvariasRepository, AvariasRepository>();
             collection.AddScoped<IComponenteRepository, ComponenteRepository>();
+            collection.AddScoped<IVistoriaRepository, VistoriaRepository>();
 
             return collection;
         }

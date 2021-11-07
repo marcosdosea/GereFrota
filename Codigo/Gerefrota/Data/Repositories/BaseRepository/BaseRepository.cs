@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Data.Repositories.BaseRepository
 {
@@ -22,10 +23,10 @@ namespace Data.Repositories.BaseRepository
         /// </summary>
         /// <param name="obj">Objeto a ser deletado da base</param>
         /// <returns></returns>
-        public bool Delete(T obj)
+        public async Task<bool> Delete(T obj)
         {
             _dbSet.Remove(obj);
-            return _context.SaveChanges() == 1;
+            return await _context.SaveChangesAsync() == 1;
         }
 
         /// <summary>
@@ -40,10 +41,10 @@ namespace Data.Repositories.BaseRepository
         /// </summary>
         /// <param name="obj">Objeto a ser inserido.</param>
         /// <returns></returns>
-        public T Insert(T obj)
+        public async Task<T> Insert(T obj)
         {
-            var x = _dbSet.Add(obj).Entity;
-            return _context.SaveChanges() == 1 ? x : null;
+            var entry = await _dbSet.AddAsync(obj);
+            return await _context.SaveChangesAsync() == 1 ? entry.Entity : null;
         }
 
         /// <summary>
@@ -51,10 +52,10 @@ namespace Data.Repositories.BaseRepository
         /// </summary>
         /// <param name="obj"></param>
         /// <returns>Retorna o objeto atualizado</returns>
-        public T Update(T obj)
+        public async Task<T> Update(T obj)
         {
-            var x = _dbSet.Update(obj).Entity;
-            return _context.SaveChanges() == 1 ? x : null;
+            var entidade = _dbSet.Update(obj).Entity;
+            return await _context.SaveChangesAsync() == 1 ? entidade : null;
         }
     }
 }

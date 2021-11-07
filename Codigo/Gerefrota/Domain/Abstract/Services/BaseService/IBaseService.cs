@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Domain.Abstract.Services.BaseService
 {
@@ -11,21 +12,21 @@ namespace Domain.Abstract.Services.BaseService
         /// </summary>
         /// <param name="obj">Objeto a ser inserido.</param>
         /// <returns></returns>
-        TModel Insert(TModel obj);
+        Task<TModel> Insert(TModel obj);
 
         /// <summary>
         /// Atualiza um objeto da base de dados.
         /// </summary>
         /// <param name="obj">Objeto a ser atualizado</param>
         /// <returns>Retorna o objeto atualizado</returns>
-        TModel Update(TModel obj);
+        Task<TModel> Update(TModel obj);
 
         /// <summary>
         /// Remove um objeto da base de dados
         /// </summary>
         /// <param name="obj">Objeto a ser deletado da base</param>
         /// <returns>Retorna se o objeto foi deletado ou não.</returns>
-        bool Delete(TModel obj);
+        Task<bool> Delete(TModel obj);
 
         /// <summary>
         /// Retorna os itens baseado no filtro que você passar.

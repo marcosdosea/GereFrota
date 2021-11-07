@@ -7,9 +7,6 @@ namespace Data.Repositories
 {
     public class ComponenteRepository : BaseRepository<Componente>, IComponenteRepository
     {
-        public ComponenteRepository(ContextDB context) : base(context)
-        {
-
-        }
+        public ComponenteRepository(ContextDB context) : base(context) { }
     }
 }

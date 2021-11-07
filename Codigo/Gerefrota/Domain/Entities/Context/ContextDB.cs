@@ -684,7 +684,6 @@ namespace Domain.Entities.Context
                 entity.HasOne(d => d.IdRelatorioMecanicoNavigation)
                     .WithMany(p => p.Vistoria)
                     .HasForeignKey(d => d.IdRelatorioMecanico)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_VISTORIAS_RELATORIO_MECANICO1");
 
                 entity.HasOne(d => d.IdVeiculoNavigation)
