@@ -61,3 +61,4 @@ jobs:
           version_description: ${{ github.sha }}
           region: ${{ secrets.AWS_REGION }}
           deployment_package: ${{ github.workspace }}/out.zip
+          use_existing_version_if_available: true
