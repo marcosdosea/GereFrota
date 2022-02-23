@@ -11,9 +11,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-        run:
-          working-directory: ./Codigo/GereFrota/
+    env:
+      work-directory: ./Codigo/GereFrota/
 
     steps:
     - uses: actions/checkout@v2
@@ -22,6 +21,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
+    - name: Teste
+      working-directory: ${{env.work-directory}}
+      run: ls -lr
 
     - name: Restauração de dependências
       run: dotnet restore
