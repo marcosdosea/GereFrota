@@ -27,7 +27,10 @@ jobs:
       working-directory: ${{env.work-directory}}
 
     - name: Restauração de dependências
-      run: dotnet restore
+      run: |
+        ls
+        echo ${{env.work-directory}}
+        dotnet restore
 
     - name: Buildando Aplicação
       run: dotnet build --no-restore
