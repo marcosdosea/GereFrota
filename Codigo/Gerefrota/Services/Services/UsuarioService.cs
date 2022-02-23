@@ -3,7 +3,6 @@ using Domain.Abstract.Repositories;
 using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Abstract.Services;
 using Domain.Entities;
-using Domain.Entities.Auxs;
 using Domain.Models;
 using Domain.Models.Auxs;
 using Services.Services.BaseService;
@@ -27,9 +26,9 @@ namespace Services.Services
         {
             var onlyDigits = Regex.Replace(userLogin.Username, "[^0-9a-zA-Z]+", "");
             var isCpf = onlyDigits.All(c => char.IsDigit(c));
-            Func<UserAndType, bool> match = isCpf
-                ? (y) => y.Usuario.Cpf == onlyDigits && y.Usuario.Senha == userLogin.Password
-                : (y) => y.Usuario.Email == userLogin.Username && y.Usuario.Senha == userLogin.Password;
+            Func<Usuario, bool> match = isCpf
+                ? (y) => y.Cpf == onlyDigits && y.Senha == userLogin.Password
+                : (y) => y.Email == userLogin.Username && y.Senha == userLogin.Password;
 
             return _mapper.Map<UserAndTypeModel>(_repo.GetUsuarioByLoginAndPass(match));
         }

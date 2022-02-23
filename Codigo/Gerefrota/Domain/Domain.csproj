@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Auxs\" />
     <Folder Include="Abstract\Services\Auxs\" />
-    <Folder Include="Entities\Auxs\" />
   </ItemGroup>
 </Project>

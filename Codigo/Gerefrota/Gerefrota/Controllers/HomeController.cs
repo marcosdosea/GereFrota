@@ -11,25 +11,21 @@ namespace Gerefrota.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class VeiculoController : ControllerBase
+    public class HomeController : ControllerBase
     {
         private readonly IVeiculoService _veiculoService;
         private readonly IFrotaService _frotaService;
-        private readonly IUnidadeService _unidadeService;
         private UserAndTypeModel _usuarioLogado;
-        public VeiculoController(IVeiculoService veiculoService, IFrotaService frotaService, IUnidadeService unidadeService)
-            => (_veiculoService, _frotaService, _unidadeService) = (veiculoService, frotaService, unidadeService);
+        public HomeController(IVeiculoService veiculoService, IFrotaService frotaService)
+            => (_veiculoService, _frotaService) = (veiculoService, frotaService);
 
         [HttpGet]
         public IActionResult Get()
         {
             _usuarioLogado = ((ClaimsIdentity)User.Identity).GetIdentityUser();
-
             var frotas = _frotaService.ObterTodasAsFrotasPorUnidade(_usuarioLogado.Usuario.IdUnidade);
-            var unidade = _unidadeService.Get(u => u.Id == _usuarioLogado.Usuario.IdUnidade);
-            var veiculos = frotas.Select(frota => _veiculoService.ObterTodosVeiculosDaFrota(frota.Id));
-
-            return Ok(new { veiculos, unidade });
+            var veiculos = frotas.Select(f => _veiculoService.ObterTodosVeiculosDaFrota(f.Id));
+            return Ok(veiculos);
         }
     }
 }

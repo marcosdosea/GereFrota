@@ -26,6 +26,7 @@ namespace Services.Services.Auxs
                     new Claim(ClaimTypes.Name, user.Usuario.Nome),
                     new Claim(ClaimTypes.Email, user.Usuario.Email),
                     new Claim(ClaimTypes.MobilePhone, user.Usuario.Telefone),
+                    new Claim(ClaimTypes.PrimarySid, user.TipoUsuario.Id.ToString()),
                     new Claim(ClaimTypes.Role, user.TipoUsuario.Descricao),
                     new Claim(ClaimTypes.SerialNumber, user.Usuario.NumeroMatricula),
                     new Claim(ClaimTypes.PrimaryGroupSid, user.Usuario.IdUnidade.ToString())

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Services.Services.BaseService
 {
@@ -19,14 +20,14 @@ namespace Services.Services.BaseService
             _mapper = mapper;
         }
 
-        public bool Delete(TModel obj) => _repositoryInterface.Delete(_mapper.Map<TEntity>(obj));
+        public async Task<bool> Delete(TModel obj) => await _repositoryInterface.Delete(_mapper.Map<TEntity>(obj));
 
         public TModel Get(Expression<Func<TEntity, bool>> filter) => _mapper.Map<TEntity, TModel>(_repositoryInterface.Get(filter).FirstOrDefault());
 
-        public List<TModel> GetAll() => _repositoryInterface.Get().Select(x => _mapper.Map<TModel>(x)).ToList();
+        public IEnumerable<TModel> GetAll(Expression<Func<TEntity, bool>> filter = null) => _repositoryInterface.Get(filter).Select(x => _mapper.Map<TModel>(x));
 
-        public TModel Insert(TModel obj) => _mapper.Map<TModel>(_repositoryInterface.Insert(_mapper.Map<TEntity>(obj)));
+        public async Task<TModel> Insert(TModel obj) => _mapper.Map<TModel>(await _repositoryInterface.Insert(_mapper.Map<TEntity>(obj)));
 
-        public TModel Update(TModel obj) => _mapper.Map<TModel>(_repositoryInterface.Update(_mapper.Map<TEntity>(obj)));
+        public async Task<TModel> Update(TModel obj) => _mapper.Map<TModel>(await _repositoryInterface.Update(_mapper.Map<TEntity>(obj)));
     }
 }

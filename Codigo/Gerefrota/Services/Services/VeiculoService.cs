@@ -4,6 +4,7 @@ using Domain.Abstract.Repositories.BaseRepository;
 using Domain.Abstract.Services;
 using Domain.Entities;
 using Domain.Models;
+using Domain.Models.Auxs;
 using Services.Services.BaseService;
 using System.Collections.Generic;
 
@@ -23,6 +24,12 @@ namespace Services.Services
         {
             var veiculos = _repo.GetAllVeiculoByFrota(idFrota);
             return _mapper.Map<IEnumerable<VeiculoModel>>(veiculos);
+        }
+
+        public IEnumerable<VeiculoESolicitacaoManutencaoModel> GetAllVeiculosAndSolicitacao(int idFrota)
+        {
+            var veiculosAndSolicitacoes = _repo.GetAllVeiculosAndSolicitacao(idFrota);
+            return _mapper.Map<IEnumerable<VeiculoESolicitacaoManutencaoModel>>(veiculosAndSolicitacoes);
         }
     }
 }

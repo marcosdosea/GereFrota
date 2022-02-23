@@ -7,8 +7,6 @@ namespace Data.Repositories
 {
     public class RelatorioMecanicoRepository : BaseRepository<RelatorioMecanico>, IRelatorioMecanicoRepository
     {
-        public RelatorioMecanicoRepository(ContextDB context) : base(context)
-        {
-        }
+        public RelatorioMecanicoRepository(ContextDB context) : base(context) { }
     }
 }

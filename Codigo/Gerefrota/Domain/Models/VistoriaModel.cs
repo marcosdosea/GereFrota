@@ -9,7 +9,8 @@ namespace Domain.Models
         public int Id { get; set; }
         public DateTime Data { get; set; }
         public string Descricao { get; set; }
+        public bool? TemAvaria { get; set; }
         public int IdVeiculo { get; set; }
-        public int IdRelatorioMecanico { get; set; }
+        public int? IdRelatorioMecanico { get; set; }
     }
 }

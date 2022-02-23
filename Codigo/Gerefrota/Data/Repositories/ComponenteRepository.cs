@@ -5,8 +5,8 @@ using Domain.Entities.Context;
 
 namespace Data.Repositories
 {
-    public class CategoriaCnhRepository : BaseRepository<CategoriaCnh>, ICategoriaCnhRepository
+    public class ComponenteRepository : BaseRepository<Componente>, IComponenteRepository
     {
-        public CategoriaCnhRepository(ContextDB context) : base(context) { }
+        public ComponenteRepository(ContextDB context) : base(context) { }
     }
 }

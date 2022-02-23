@@ -7,6 +7,6 @@ namespace Domain.Abstract.Repositories
 {
     public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
-        UserAndType GetUsuarioByLoginAndPass(Func<UserAndType, bool> match);
+        UserAndType GetUsuarioByLoginAndPass(Func<Usuario, bool> match);
     }
 }
