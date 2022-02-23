@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      work-directory: Codigo/GereFrota
+      work-directory: Codigo/Gerefrota
 
     steps:
       - uses: actions/checkout@v2
@@ -22,34 +22,33 @@ jobs:
 
       - name: Restauração de dependências
         run: |
-          ls
-          cd Codigo
-          ls
+          cd ${{env.work-directory}}
+          dotnet restore
 
-      # - name: Buildando Aplicação
-      #   run: |
-      #     cd ${{env.work-directory}}
-      #     dotnet build --no-restore
+      - name: Buildando Aplicação
+        run: |
+          cd ${{env.work-directory}}
+          dotnet build --no-restore
 
-      # - name: Fazendo release da Aplicação
-      #   run: |
-      #     cd ${{env.work-directory}}
-      #     dotnet build --configuration Release --no-restore
+      - name: Fazendo release da Aplicação
+        run: |
+          cd ${{env.work-directory}}
+          dotnet build --configuration Release --no-restore
 
-      # - name: Testando Aplicação
-      #   run: |
-      #     cd ${{env.work-directory}}
-      #     dotnet test --no-build --verbosity normal
+      - name: Testando Aplicação
+        run: |
+          cd ${{env.work-directory}}
+          dotnet test --no-build --verbosity normal
 
-      # - name: Publicando Aplicação
-      #   run: |
-      #     cd ${{env.work-directory}}
-      #     dotnet publish -c Release -o '${{ github.workspace }}/out'
+      - name: Publicando Aplicação
+        run: |
+          cd ${{env.work-directory}}
+          dotnet publish -c Release -o '${{ github.workspace }}/out'
 
-      # - name: Zipando Arquivos
-      #   run: |
-      #     cd ${{ github.workspace }}/out
-      #     zip -r ${{ github.workspace }}/out.zip *
+      - name: Zipando Arquivos
+        run: |
+          cd ${{ github.workspace }}/out
+          zip -r ${{ github.workspace }}/out.zip *
 
       # - name: Deploy para AWS
       #   uses: einaregilsson/beanstalk-deploy@v20
