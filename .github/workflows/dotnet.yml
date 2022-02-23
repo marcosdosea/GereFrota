@@ -23,8 +23,8 @@ jobs:
         dotnet-version: 5.0.x
         
     - name: Teste
-      working-directory: ${{env.work-directory}}
       run: ls -lr
+      working-directory: ${{env.work-directory}}
 
     - name: Restauração de dependências
       run: dotnet restore
