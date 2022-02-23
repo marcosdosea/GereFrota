@@ -1,0 +1,53 @@
+name: Deploy AWS
+
+on:
+
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Restauração de dependências
+      run: dotnet restore
+
+    - name: Buildando Aplicação
+      run: dotnet build --no-restore
+
+    - name: Fazendo release da Aplicação
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Testando Aplicação
+      run: dotnet test --no-build --verbosity normal
+
+    - name: Publicando Aplicação
+      run: dotnet publish -c Release -o '${{ github.workspace }}/out'
+
+    - name: Zipando Arquivos
+      run: |
+        cd ${{ github.workspace }}/out
+        zip -r ${{ github.workspace }}/out.zip *
+        
+    - name: Deploy para AWS
+      uses: einaregilsson/beanstalk-deploy@v20
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: Apibeanstalkteste
+        environment_name: Apibeanstalkteste-env
+        version_label: ${{ github.run_id }}
+        version_description: ${{ github.sha }}
+        region: ${{ secrets.AWS_REGION }}
+        deployment_package: ${{ github.workspace }}/out.zip
