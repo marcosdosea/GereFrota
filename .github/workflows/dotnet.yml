@@ -21,10 +21,6 @@ jobs:
       uses: actions/checkout@v1
       with:
         dotnet-version: 5.0.x
-        
-    - name: Teste
-      run: ls
-      working-directory: ${{env.work-directory}}
 
     - name: Restauração de dependências
       run: |
