@@ -23,7 +23,7 @@ jobs:
         dotnet-version: 5.0.x
         
     - name: Teste
-      run: ls -lr
+      run: ls
       working-directory: ${{env.work-directory}}
 
     - name: Restauração de dependências
