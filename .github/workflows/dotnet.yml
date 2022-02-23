@@ -7,14 +7,13 @@ on:
   pull_request:
     branches: [ master ]
     
-defaults:
-  run:
-    working-directory: ./Codigo/GereFrota/
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+        run:
+          working-directory: ./Codigo/GereFrota/
 
     steps:
     - uses: actions/checkout@v2
