@@ -23,31 +23,33 @@ jobs:
       - name: Restauração de dependências
         run: |
           ls
-  
-      - name: Buildando Aplicação
-        run: |
-          cd ${{env.work-directory}}
-          dotnet build --no-restore
+          cd Codigo
+          ls
 
-      - name: Fazendo release da Aplicação
-        run: |
-          cd ${{env.work-directory}}
-          dotnet build --configuration Release --no-restore
+      # - name: Buildando Aplicação
+      #   run: |
+      #     cd ${{env.work-directory}}
+      #     dotnet build --no-restore
 
-      - name: Testando Aplicação
-        run: |
-          cd ${{env.work-directory}}
-          dotnet test --no-build --verbosity normal
+      # - name: Fazendo release da Aplicação
+      #   run: |
+      #     cd ${{env.work-directory}}
+      #     dotnet build --configuration Release --no-restore
 
-      - name: Publicando Aplicação
-        run: |
-          cd ${{env.work-directory}}
-          dotnet publish -c Release -o '${{ github.workspace }}/out'
+      # - name: Testando Aplicação
+      #   run: |
+      #     cd ${{env.work-directory}}
+      #     dotnet test --no-build --verbosity normal
 
-      - name: Zipando Arquivos
-        run: |
-          cd ${{ github.workspace }}/out
-          zip -r ${{ github.workspace }}/out.zip *
+      # - name: Publicando Aplicação
+      #   run: |
+      #     cd ${{env.work-directory}}
+      #     dotnet publish -c Release -o '${{ github.workspace }}/out'
+
+      # - name: Zipando Arquivos
+      #   run: |
+      #     cd ${{ github.workspace }}/out
+      #     zip -r ${{ github.workspace }}/out.zip *
 
       # - name: Deploy para AWS
       #   uses: einaregilsson/beanstalk-deploy@v20
