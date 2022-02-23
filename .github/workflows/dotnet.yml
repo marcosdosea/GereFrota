@@ -22,7 +22,6 @@ jobs:
 
       - name: Restauração de dependências
         run: |
-          cd ${{env.work-directory}}
           ls
   
       - name: Buildando Aplicação
