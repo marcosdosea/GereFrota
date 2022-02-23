@@ -12,7 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      work-directory: ./Codigo/GereFrota/
+      work-directory: Codigo/GereFrota
 
     steps:
     - uses: actions/checkout@v2
