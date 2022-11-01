@@ -1,4 +1,4 @@
-name: Deploy AWS
+name: Deploy FTP Dosea
 
 on:
   push:
@@ -49,16 +49,29 @@ jobs:
         run: |
           cd ${{ github.workspace }}/out
           zip -r ${{ github.workspace }}/out.zip *
-
-      - name: Deploy para AWS
-        uses: einaregilsson/beanstalk-deploy@v20
+          
+      - name: Upload via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: gerefrota
-          environment_name: Gerefrota-env
-          version_label: ${{ github.run_id }}
-          version_description: ${{ github.sha }}
-          region: ${{ secrets.AWS_REGION }}
-          deployment_package: ${{ github.workspace }}/out.zip
-          use_existing_version_if_available: true
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+#           local-dir: publish/
+          local-dir: ${{ github.workspace }}/out
+          remote-dir: ./
+          exclude: |
+            */.git
+            */.git/**
+
+#       - name: Deploy para AWS
+#         uses: einaregilsson/beanstalk-deploy@v20
+#         with:
+#           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           application_name: gerefrota
+#           environment_name: Gerefrota-env
+#           version_label: ${{ github.run_id }}
+#           version_description: ${{ github.sha }}
+#           region: ${{ secrets.AWS_REGION }}
+#           deployment_package: ${{ github.workspace }}/out.zip
+#           use_existing_version_if_available: true
