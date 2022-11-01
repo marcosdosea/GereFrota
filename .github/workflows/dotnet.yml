@@ -45,10 +45,10 @@ jobs:
           cd ${{env.work-directory}}
           dotnet publish -c Release -o '${{ github.workspace }}/out'
 
-      - name: Zipando Arquivos
-        run: |
-          cd ${{ github.workspace }}/out
-          zip -r ${{ github.workspace }}/out.zip *
+#       - name: Zipando Arquivos
+#         run: |
+#           cd ${{ github.workspace }}/out
+#           zip -r ${{ github.workspace }}/out.zip *
           
       - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -58,7 +58,7 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
 #           local-dir: publish/
           local-dir: ${{ github.workspace }}/out/
-          remote-dir: ./
+          remote-dir: ./gerefrota/
           exclude: |
             */.git
             */.git/**
