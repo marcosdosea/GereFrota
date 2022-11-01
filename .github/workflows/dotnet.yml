@@ -57,7 +57,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
 #           local-dir: publish/
-          local-dir: ${{ github.workspace }}/out
+          local-dir: ${{ github.workspace }}/out/
           remote-dir: ./
           exclude: |
             */.git
