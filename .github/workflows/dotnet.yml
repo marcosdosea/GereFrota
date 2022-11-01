@@ -53,12 +53,12 @@ jobs:
       - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-#           server: ${{ secrets.FTP_SERVER }}
-#           username: ${{ secrets.FTP_USER }}
-#           password: ${{ secrets.FTP_PASS }}
-          server: win8038.site4now.net
-          username: gerefrota-gab
-          password: salas@2022
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+#           server: win8038.site4now.net
+#           username: gerefrota-gab
+#           password: salas@2022
 #           local-dir: publish/
           local-dir: ${{ github.workspace }}/out/
           remote-dir: ./
