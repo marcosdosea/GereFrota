@@ -57,11 +57,11 @@ jobs:
 #           username: ${{ secrets.FTP_USER }}
 #           password: ${{ secrets.FTP_PASS }}
           server: win8038.site4now.net
-          username: marcosdosea-002
+          username: gerefrota-gab
           password: salas@2022
 #           local-dir: publish/
           local-dir: ${{ github.workspace }}/out/
-          remote-dir: ./gerefrota/
+          remote-dir: ./
           exclude: |
             */.git
             */.git/**
